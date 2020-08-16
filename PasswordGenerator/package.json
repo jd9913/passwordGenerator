@@ -1,0 +1,9 @@
+{
+  "name": "password-generator",
+  "version": "0.0.0",
+  "description": "PasswordGenerator",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
