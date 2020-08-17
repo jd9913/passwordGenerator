@@ -3,9 +3,8 @@
     "",
     "\\assets",
     "\\assets\\css",
-    "\\assets\\js",
-    "\\PasswordGenerator"
+    "\\assets\\js"
   ],
-  "SelectedNode": "\\PasswordGenerator\\server.js",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
