@@ -4,7 +4,7 @@ var passwordText = document.querySelector("#password");
 
 //set the default values for the user input
 
-var lengthEl = "";
+var lengthEl = 0;
 var upperEl = true;
 var lowerEl = true;
 var numberEl = true;
@@ -12,7 +12,7 @@ var symbolEl = true;
 
 
 
-var typeArray = [upperEl + lowerEl + numberEl + symbolEl]; //place all of the types into their own array
+var typeArray = [{ upperEl } + { lowerEl } + { numberEl } + { symbolEl }]; //place all of the types into their own array
 
 var lower = [getRandomLower()];
 var upper = [getRandomUpper()];
@@ -20,6 +20,8 @@ var num = [getRandomNumber()];
 var sym = [getRandomSymbol()];
 
 var passwordArray = []; //place randomly generated characters into their own array
+
+
 
 
 generateBtn.addEventListener("click", passwordText); {
@@ -36,54 +38,75 @@ generateBtn.addEventListener("click", passwordText); {
 
 
 
-    passwordText.value = generatePassword(upper + lower + num + sym);
+    passwordText.value = generatePassword(passwordArray);
 
 };
 
-
-function typeVerify(typeArray) {  //verify which of the user inputs are true and which are false
-
-
+/*function typeVerify(typeArray) {  //verify which of the user inputs are true and which are false
 
     if (upperEl) {
         passwordArray += upper;
-    } else {
-        upper = "";
-    }
+    } else
 
-    if (lowerEl) {
-        passwordArray += lower;
-    } else {
-        lower = "";
-    }
-    if (numberEl) {
-        passwordArray += num;
-    } else {
-        num = "";
-    }
 
-    if (symbolEl) {
-        passwordArray += sym;
-    } else {
-        sym = "";
-    }
+        if (lowerEl) {
+            passwordArray += lower;
+        } else
 
-}
+
+            if (numberEl) {
+                passwordArray += num;
+            } else
+
+
+
+                if (symbolEl) {
+                    passwordArray += sym;
+                } else {
+                    sym = "";
+                }
+    return typeArray;*/
 
 
 
 function generatePassword() {       //going to take the true user inputs and add them to an array
 
+    var typeArray = [];
+
+    if (upperEl) {
+        typeArray+= upper;
+    }
+
+    if (lowerEl) {
+        typeArray += lower;
+    }
+
+        if (numberEl) {
+        typeArray += num;
+    }
+    if (symbolEl) {
+        typeArray += sym;
+    }
 
     var generate = passwordArray;
 
     for (var i = 0; i < lengthEl - 1; i++) {
 
+        if (upperEl) {
+            passwordArray += upper;
+        }
 
-        passwordArray = typeVerify(upperEl) ? passwordArray += passwordArray.concat(upper) : "";
-        passwordArray = typeVerify(lowerEl) ? passwordArray += passwordArray.concat(lower) : "";
-        passwordArray = typeVerify(numberEl) ? passwordArray += passwordArray.concat(num) : "";
-        passwordArray = typeVerify(symbolEl) ? passwordArray += passwordArray.concat(sym) : "";
+        if (lowerEl) {
+            passwordArray += lower;
+        }
+
+        if (numberEl) {
+            passwordArray += num;
+        }
+        if (symbolEl) {
+            passwordArray += sym;
+        }
+        return typeArray = passwordArray;
     }
 
     //generate = passwordArray.slice(passwordArray.length - lengthEl);
@@ -111,3 +134,15 @@ function getRandomSymbol() {
     var symbolsArray = '!@#$%^&*(){}[]=><,.';
     return symbolsArray[Math.floor(Math.random() * symbolsArray.length)];
 };
+
+
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+
+}

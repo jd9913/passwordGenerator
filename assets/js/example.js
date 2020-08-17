@@ -131,7 +131,7 @@ pwdPool = passwordArray.push(lower, upper, number, symbol);
 
 // var pwdPool = passwordArray.concat(getRandomUpper(), getRandomLower(), getRandomNumber(), getRandomSymbol(),);
 
-for (i = 0; i < pwdLengthElement + 1; i++) {
+for (i = 0; i < pwdLengthElement - 1; i++) {
 
     pwdPool.push(getRandomUpper(), getRandomLower(), getRandomNumber(), getRandomSymbol(),);
 
